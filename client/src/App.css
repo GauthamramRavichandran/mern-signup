@@ -1,0 +1,9 @@
+.invalid-feedback{
+    color:red;
+    animation-name:"invalid";
+    transition-duration: 5s;
+}
+@keyframes invalid{
+    from {opacity: 0;}
+    to {opacity: 100;}
+}

@@ -8,18 +8,19 @@ const UserSchema = new Schema({
     },
     email : {
         type: String,
+        unique:true,
         required: true
     },
     password : {
         type: String,
         required: true
     },
-    date : {
+    createdOn : {
         type: Date,
         default: Date.now
     },
     dob : {
-        type:Date
+        type:String
     },
     contact : {
         type: Number

@@ -39,9 +39,15 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render(){
     return (
+      
+
       <Provider store={store}>
           <Router>
-            
+            <head>
+              <link type="text/html" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
+              
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </head>
             <div className="App">
               
                   <Navbar />                      
@@ -55,8 +61,12 @@ class App extends Component {
                   </Switch>
                 
             </div>
+            <body>
+              <script type="text/javascript" src="materialize.min.js"></script>
+            </body>
           </Router>
         </Provider>
+        
     );
   }
 }

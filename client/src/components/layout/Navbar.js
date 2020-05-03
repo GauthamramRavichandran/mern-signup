@@ -19,10 +19,9 @@ class Navbar extends Component {
               style={{
                 fontFamily: "monospace"
               }}
-              className="col s4 brand-logo center black-text"
+              className="col s4 brand-logo center blue-text"
               >
-              <i className="material-icons">code</i>
-              MERN
+              telegramize
             </Link>
             {this.props.auth.isAuthenticated === true ?
               <button

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './landing.css';
 
 class Landing extends Component {
   render() {
@@ -8,13 +9,11 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
+              A <i className="small material-icons">chevron_left</i><b>minimal</b><i className="small material-icons">chevron_right</i> login/auth app with {" "}
+              <span style={{ fontFamily: "monospace" }}>MERN</span> stack
             </h4>
-            <p className="flow-text grey-text text-darken-1">
-              Create a (minimal) full-stack app with user authentication via
-              passport and JWTs
+            <p className="flow-text grey-text text-darken-1 center">
+              with user authentication via passport and JWTs
             </p>
             <br />
             <div className="col s6">

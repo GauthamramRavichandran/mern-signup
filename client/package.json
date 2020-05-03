@@ -25,12 +25,11 @@
     "superagent": "^5.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=80 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://127.0.0.1:6000",
   "eslintConfig": {
     "extends": "react-app"
   },

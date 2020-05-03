@@ -82,8 +82,7 @@ class Register extends Component {
                 <label htmlFor="name">Name</label>
                 <span className="red-text">{errors.name}</span>
               </div>
-              <div className="tiny material-icons col s1" style={{ paddingTop: "26.550px", color:"red"}}>insert_chart</div>
-        
+                     
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -95,7 +94,7 @@ class Register extends Component {
                     invalid: errors.email
                   })}
                 />
-                <label htmlFor="email"><i className="tiny material-icons offset-s2">email</i> Email</label>
+                <label htmlFor="email">Email</label>
                 <span className="red-text">{errors.email}</span>
               </div>
               <div className="input-field col s12">

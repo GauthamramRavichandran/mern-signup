@@ -76,6 +76,9 @@
   height: 200px;
 }
 
+.datepicker-date-display {
+  background-color: #2979ff;
+}
 
 .toasts-rounded{
   position: relative;

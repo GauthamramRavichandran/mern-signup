@@ -13,6 +13,7 @@ import "../dashboard/dashboard.css"
 const CLOUDINARY_UPLOAD_PRESET = 'mern-social-media';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/deanwinchester/upload';
 const DEFAULT_AVATAR = 'https://res.cloudinary.com/deanwinchester/image/upload/v1585934758/mern-social-profile-photos/avatar-default-icon_clyvdc.png'
+const HOSTNAME_PORT = "http://telegramize.me:6656";
 
 class Dashboard extends Component {
   constructor() {
@@ -33,8 +34,8 @@ class Dashboard extends Component {
     var context = this;
     // initalising datepicker
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelector('.datepicker');
-      
+      var elems = document.querySelectorAll('.datepicker');
+      //console.log(elems);
       var options = {"autoClose": true,
                     "format": "mmm dd yyyy",
                     "defaultDate": new Date("1998-01-21"),
@@ -44,10 +45,10 @@ class Dashboard extends Component {
                       context.setState({dob : date})
                     }};
       // storing in a var incase if you want to use in future
-      var instances = M.Datepicker.init(elems, options);  
+      M.Datepicker.init(elems, options);  
     });
 
-    axios.get('/api/users/get/'+ this.props.auth.user.id)
+    axios.get(HOSTNAME_PORT+'/api/users/get/'+ this.props.auth.user.id)
     .then(response => {
         this.setState({
             id: response.data._id,
@@ -58,19 +59,15 @@ class Dashboard extends Component {
             dob: response.data.dob
             })
         })
-    .catch(function(error) {
-        console.log(error);
-    })
+    .catch()
 
-    axios.get('/api/users/profile/'+ this.props.auth.user.id)
+    axios.get(HOSTNAME_PORT+'/api/users/profile/'+ this.props.auth.user.id)
     .then(response => {
       this.setState({
         uploadedFileCloudinaryUrl : response.data.secure_url
         })
       })
-    .catch(function(error) {
-      console.log(error);
-      })
+    .catch()
 }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
@@ -82,7 +79,7 @@ class Dashboard extends Component {
   
 
   handleImageUpload = (file) => {
-    axios.post('/api/users/profile/'+ this.state.id)
+    axios.post(HOSTNAME_PORT+'/api/users/profile/'+ this.state.id)
     .catch(function(error){
       console.log(error);
     })
@@ -118,7 +115,7 @@ class Dashboard extends Component {
     };
     this.setState({dob: this.state.dob instanceof Date ? this.state.dob.toDateString().slice(4) : this.state.dob})
 
-    axios.post("/api/users/update", newUser)
+    axios.post(HOSTNAME_PORT+"/api/users/update", newUser)
     .then(res =>   M.toast({html: 'Changes saved successfully!', classes: 'toasts-rounded rounded'}))
     .catch(function(err) { console.error(err)})
   }; 

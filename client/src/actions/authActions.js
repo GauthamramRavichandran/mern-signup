@@ -7,11 +7,15 @@ import {
   USER_LOADING
 } from "./types";
 
+const HOSTNAME_PORT = "http://telegramize.me:6656";
+
 // Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log(userData);
   axios
-    .post("/api/users/register", userData)
+    .post(HOSTNAME_PORT+"/api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login on successful register
+    //.catch(err=> console.log(err))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -22,7 +26,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post(HOSTNAME_PORT+"/api/users/login", userData)
     .then(res => {
       // Save to localStorage
       const { token } = res.data;
@@ -34,6 +38,7 @@ export const loginUser = userData => dispatch => {
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
+    //.catch(err => console.log(err))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
